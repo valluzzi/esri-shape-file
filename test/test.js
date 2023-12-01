@@ -12,7 +12,7 @@ const { readDbf, readRecord } = require('../src/lib/readDbf.js');
 const { juststem } = require('../src/lib/filesystem.js');
 const { fetchBig } = require('../src/lib/http.js');
 
-describe("Cloud Optimized Shapefie", function(){
+describe("Simple Shapefile parser", function(){
 
     //const fileshp = "http://localhost:4000/test/points.shp" 
     const fileshp = "http://localhost:4000/test/polygons.shp" 
