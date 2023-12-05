@@ -1,6 +1,6 @@
 {
     "name": "@valluzzi/esri-shape-file",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Simple Shape file parser",
     "main": "dist/index.js",
     "module": "dist/index.js",
