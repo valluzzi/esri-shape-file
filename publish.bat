@@ -16,11 +16,12 @@ echo     "name": %packagename%,>>package.bkp
 echo     "version": "1.1.%version%",>>package.bkp
 findstr /v "^{" package.json | findstr /v "\"name\":" | findstr /v "\"version\":" >> package.bkp
 copy /Y package.bkp package.json
+del package.bkp
 
 
 
 ::commit and push the changes
-set comment="version 1.0.%version%"
+set comment="version 1.1.%version%"
 cmd /c git add .
 cmd /c git commit -m %comment%
 cmd /c git push

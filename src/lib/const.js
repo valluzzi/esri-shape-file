@@ -1,5 +1,3 @@
-const version = '0.1.3'
-
 const ogr = {
     GEOMETRY: {
         Unknown: 0,
