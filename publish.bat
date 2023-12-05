@@ -1,5 +1,5 @@
 @echo off
-set packagename="@valluzzi/esri-spahe-file"
+set packagename="@valluzzi/esri-shape-file"
 
 :: find the version number in package.json and increment it
 for /F "tokens=2 delims=:, " %%t in ('findstr "\"version\":" package.json') do (
