@@ -11,10 +11,12 @@ for /F "tokens=2 delims=:, " %%t in ('findstr "\"version\":" package.json') do (
 )
 
 :: replace the version number in package.json
-echo {>package.json
-echo     "name": %packagename%,>>package.json
-echo     "version": "1.1.%version%",>>package.json
-findstr /v "^{" package.json | findstr /v "\"name\":" | findstr /v "\"version\":" >> package.json
+echo {>package.bkp
+echo     "name": %packagename%,>>package.bkp
+echo     "version": "1.1.%version%",>>package.bkp
+findstr /v "^{" package.json | findstr /v "\"name\":" | findstr /v "\"version\":" >> package.bkp
+copy /Y package.bkp package.json
+
 
 
 ::commit and push the changes
