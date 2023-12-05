@@ -6,6 +6,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var Buffer = require('buffer').Buffer;
 var fetch = require('node-fetch');
+var _require = require('./readDbf.js'),
+  readDbf = _require.readDbf;
+var _require2 = require('events'),
+  on = _require2.on;
 var fetchBigRange = require('./http.js').fetchBigRange;
 var parseFeatures = require('./readShp.js').parseFeatures;
 var __CACHE__ = {};
@@ -16,7 +20,7 @@ var __CACHE__ = {};
  * @returns features that are inside the bbox
  */
 var fetchFeatures = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(fileshp, bbox) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(fileshp, bbox, onlyshape) {
     var features;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -34,17 +38,28 @@ var fetchFeatures = /*#__PURE__*/function () {
           });
         case 2:
           features = _context.sent;
+          if (onlyshape) {
+            _context.next = 6;
+            break;
+          }
+          _context.next = 6;
+          return readDbf(fileshp).then(function (properties) {
+            return properties.map(function (property, j) {
+              features[j].properties = property;
+            });
+          });
+        case 6:
           return _context.abrupt("return", {
             "type": "FeatureCollection",
             "features": features
           });
-        case 4:
+        case 7:
         case "end":
           return _context.stop();
       }
     }, _callee);
   }));
-  return function fetchFeatures(_x, _x2) {
+  return function fetchFeatures(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   };
 }();

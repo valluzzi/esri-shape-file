@@ -184,12 +184,9 @@ var readDbf = /*#__PURE__*/function () {
           return fetchRange(filedbf);
         case 8:
           buffer = _context2.sent;
-          header = dbfHeader(buffer, encoding);
-          console.log(header);
+          header = dbfHeader(buffer, encoding); //console.log(header)
           offset = (header.fields.length + 1 << 5) + 2;
-          reccount = header.records; // just for debug
-          reccount = 3;
-          console.log("offset:", offset);
+          reccount = header.records; //console.log("offset:",offset)
           out = [];
           for (j = 0; j < reccount; j++) {
             record = parseRow(buffer, offset, header.fields, header.decoder);
@@ -197,7 +194,7 @@ var readDbf = /*#__PURE__*/function () {
             offset += header.recLen;
           }
           return _context2.abrupt("return", out);
-        case 18:
+        case 15:
         case "end":
           return _context2.stop();
       }

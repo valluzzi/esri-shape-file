@@ -1,5 +1,6 @@
 "use strict";
 
+var version = '1.1.4';
 var ogr = {
   GEOMETRY: {
     Unknown: 0,
