@@ -24,11 +24,11 @@ const fetchFeatures = async(fileshp, bbox, onlyshape) => {
 
     // merge prperties from dbf file
     if (!onlyshape){
-        const properties = await readDbf(fileshp)
-        if (properties.length===features.length){
-        for(let j=0; j<features.length; j++){
-            features[j].properties = properties[j]
-        }}
+        await readDbf(fileshp).then(properties => {
+            return properties.map((property, j) => {
+                features[j].properties = property
+            })
+        })
     }
 
     //console.log(features)
