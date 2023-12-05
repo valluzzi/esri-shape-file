@@ -178,7 +178,6 @@ const parsePolygon = (data) => {
 }
 
 
-
 /**
  * parseFeature
  * @param {*} data 
@@ -215,6 +214,7 @@ const parseFeature = (data, offset) => {
     feature.length = length;
     return feature 
 }
+
 
 /**
  * parseFeatures

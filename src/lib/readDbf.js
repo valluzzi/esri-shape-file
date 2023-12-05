@@ -143,16 +143,12 @@ const readDbf = async(fileshp) =>{
   let buffer = await fetchRange(filedbf)
 
   let header = dbfHeader(buffer, encoding);
-  console.log(header)
+  //console.log(header)
 
   let offset  = ((header.fields.length + 1) << 5) + 2;
   let reccount = header.records;
   
-  // just for debug
-  reccount = 3
-  console.log("offset:",offset)
-
-
+  //console.log("offset:",offset)
 
   let out = [];
   for(let j=0; j<reccount; j++){

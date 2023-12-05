@@ -14,11 +14,9 @@ const { fetchBig } = require('../src/lib/http.js');
 
 describe("Simple Shapefile parser", function(){
 
-    //const fileshp = "http://localhost:4000/test/points.shp" 
-    const fileshp = "http://localhost:4000/test/polygons.shp" 
+    const fileshp = "http://localhost:4000/test/points.shp" 
+    //const fileshp = "http://localhost:4000/test/polygons.shp" 
     
-    
-
 
     describe("read features test", function() {
 
@@ -30,7 +28,7 @@ describe("Simple Shapefile parser", function(){
             //let bbox = [6.947496935862917, 50.93142308123861, 6.948127164234398, 50.931920134983194]
             let bbox = [6.95366, 50.9255,    6.96621,  50.93576]
             console.log("bbox",bbox)
-            let features = await fetchFeatures(fileshp)
+            let features = await fetchFeatures(fileshp, false, false)
             console.log("features:",features)
 
             expect(true).to.equal(true);
