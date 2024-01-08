@@ -38,35 +38,5 @@ const fetchRange = async(url, range) => {
     return buff 
 }
 
-/**
- * fetchBigRange
- * @param {*} url 
- * @param {*} bigrange 
- * @returns 
- */
-const fetchBigRange = async(url, bigrange) => {
 
-    let promises = []
-
-    const [start, end] = bigrange
-    let ranges = []
-    let step = 4096*1024 // 4MB
-    let j = start
-    while(j+step<end){
-        let range = [j, j+step-1]
-        ranges.push(range)
-        j = j+step
-    } 
-    if (j<end) ranges.push([j, end])
-    // ---
-
-    for(let range of ranges){
-        let promise = fetchRange(url, range)
-        promises.push(promise)
-    }    
-    let buffers = await Promise.all(promises)
-    return Buffer.concat(buffers)
-}
-
-
-module.exports = { fetchText, fetchRange, fetchBigRange }
+module.exports = { fetchText, fetchRange }

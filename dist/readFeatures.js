@@ -8,9 +8,6 @@ var Buffer = require('buffer').Buffer;
 var fetch = require('node-fetch');
 var _require = require('./readDbf.js'),
   readDbf = _require.readDbf;
-var _require2 = require('events'),
-  on = _require2.on;
-var fetchBigRange = require('./http.js').fetchBigRange;
 var parseFeatures = require('./readShp.js').parseFeatures;
 var __CACHE__ = {};
 /**

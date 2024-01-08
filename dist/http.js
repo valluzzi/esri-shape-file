@@ -85,54 +85,7 @@ var fetchRange = /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }();
-
-/**
- * fetchBigRange
- * @param {*} url 
- * @param {*} bigrange 
- * @returns 
- */
-var fetchBigRange = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(url, bigrange) {
-    var promises, _bigrange, start, end, ranges, step, j, range, _i, _ranges, _range2, promise, buffers;
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
-        case 0:
-          promises = [];
-          _bigrange = _slicedToArray(bigrange, 2), start = _bigrange[0], end = _bigrange[1];
-          ranges = [];
-          step = 4096 * 1024; // 4MB
-          j = start;
-          while (j + step < end) {
-            range = [j, j + step - 1];
-            ranges.push(range);
-            j = j + step;
-          }
-          if (j < end) ranges.push([j, end]);
-          // ---
-
-          for (_i = 0, _ranges = ranges; _i < _ranges.length; _i++) {
-            _range2 = _ranges[_i];
-            promise = fetchRange(url, _range2);
-            promises.push(promise);
-          }
-          _context3.next = 10;
-          return Promise.all(promises);
-        case 10:
-          buffers = _context3.sent;
-          return _context3.abrupt("return", Buffer.concat(buffers));
-        case 12:
-        case "end":
-          return _context3.stop();
-      }
-    }, _callee3);
-  }));
-  return function fetchBigRange(_x4, _x5) {
-    return _ref3.apply(this, arguments);
-  };
-}();
 module.exports = {
   fetchText: fetchText,
-  fetchRange: fetchRange,
-  fetchBigRange: fetchBigRange
+  fetchRange: fetchRange
 };

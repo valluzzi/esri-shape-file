@@ -1,10 +1,7 @@
 const Buffer = require('buffer').Buffer;
 const fetch = require('node-fetch');
 const { readDbf } = require('./readDbf.js');
-const { on } = require('events');
-const fetchBigRange = require('./http.js').fetchBigRange;
 const parseFeatures = require('./readShp.js').parseFeatures;
-
 
 
 const __CACHE__ = {}
